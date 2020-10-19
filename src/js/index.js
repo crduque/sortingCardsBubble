@@ -71,6 +71,7 @@ function selectSuit() {
       "diamonds-rotate col-4 offset-8 right-suit d-flex justify-content-center"
     );
   }
+  return result;
 }
 // FUNCION QUE GENERA VALUE
 function selectValue() {
@@ -134,8 +135,10 @@ function createContent(index) {
   child.setAttribute("class", "card col-1 w-75");
   child.setAttribute("id", "card" + index);
 
-  selectSuit();
-  selectValue();
+  let everyCard = document.querySelector("#card" + index);
+  console.log(everyCard);
+  console.log(selectSuit());
+  console.log(selectValue());
 }
 
 drawButton.addEventListener("click", cardGenerator);
