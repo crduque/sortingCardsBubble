@@ -4,50 +4,50 @@
 }
 .hearts::before {
   content: "\2665";
-  font-size: 7vw;
+  font-size: 3vw;
   color: red;
 }
 .hearts-rotate::before {
   content: "\2665";
-  font-size: 7vw;
+  font-size: 3vw;
   color: red;
   transform: rotate(180deg);
 }
 .spades::before {
   content: "\2660";
-  font-size: 7vw;
+  font-size: 3vw;
   color: black;
 }
 .spades-rotate::before {
   content: "\2660";
-  font-size: 7vw;
+  font-size: 3vw;
   color: black;
   transform: rotate(180deg);
 }
 .clubs::before {
   content: "\2663";
-  font-size: 7vw;
+  font-size: 3vw;
   color: black;
 }
 .clubs-rotate::before {
   content: "\2663";
-  font-size: 7vw;
+  font-size: 3vw;
   color: black;
   transform: rotate(180deg);
 }
 .diamonds::before {
   content: "\2666";
-  font-size: 7vw;
+  font-size: 3vw;
   color: red;
 }
 .diamonds-rotate::before {
   content: "\2666";
-  font-size: 7vw;
+  font-size: 3vw;
   color: red;
   transform: rotate(180deg);
 }
 .value {
-  font-size: 12.5vw;
+  font-size: 5vw;
   color: black;
   font-family: "Gentium Basic", serif;
 }
