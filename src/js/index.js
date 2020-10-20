@@ -30,52 +30,28 @@ function randomIndex(array) {
   return array[randomNumber];
 }
 // FUNCION QUE GENERA SUITS
-function selectSuit() {
-  let top = document.querySelector("#left-suit");
-  let bot = document.querySelector("#right-suit");
+function selectSuit(top, bot) {
   let result = randomIndex(suits);
   if (result == "hearts") {
-    top.setAttribute(
-      "class",
-      "hearts col-4 left-suit d-flex justify-content-center"
-    );
-    bot.setAttribute(
-      "class",
-      "hearts-rotate col-4 offset-8 right-suit d-flex justify-content-center"
-    );
+    top.className = "hearts col-4 left-suit d-flex justify-content-center";
+    bot.className =
+      "hearts-rotate col-4 offset-8 left-suit d-flex justify-content-center";
   } else if (result == "spades") {
-    top.setAttribute(
-      "class",
-      "spades col-4 left-suit d-flex justify-content-center"
-    );
-    bot.setAttribute(
-      "class",
-      "spades-rotate col-4 offset-8 right-suit d-flex justify-content-center"
-    );
+    top.className = "spades col-4 left-suit d-flex justify-content-center";
+    bot.className =
+      "spades-rotate col-4 offset-8 left-suit d-flex justify-content-center";
   } else if (result == "clubs") {
-    top.setAttribute(
-      "class",
-      "clubs col-4 left-suit d-flex justify-content-center"
-    );
-    bot.setAttribute(
-      "class",
-      "clubs-rotate col-4 offset-8 right-suit d-flex justify-content-center"
-    );
+    top.className = "clubs col-4 left-suit d-flex justify-content-center";
+    bot.className =
+      "clubs-rotate col-4 offset-8 left-suit d-flex justify-content-center";
   } else {
-    top.setAttribute(
-      "class",
-      "diamonds col-4 left-suit d-flex justify-content-center"
-    );
-    bot.setAttribute(
-      "class",
-      "diamonds-rotate col-4 offset-8 right-suit d-flex justify-content-center"
-    );
+    top.className = "diamonds col-4 left-suit d-flex justify-content-center";
+    bot.className =
+      "diamonds-rotate col-4 offset-8 left-suit d-flex justify-content-center";
   }
-  return result;
 }
 // FUNCION QUE GENERA VALUE
-function selectValue() {
-  let mid = document.querySelector("#value");
+function selectValue(mid) {
   let result = randomIndex(values);
   let resultOut = result;
   if (result == 1) {
@@ -94,15 +70,14 @@ function selectValue() {
 function cardGenerator() {
   let allMyCards = [];
   let myInput = document.querySelector("#myInput").value;
-  //generar una carta aleateatoria y la añade en la posicion x del array
+  let father = document.querySelector("#row2");
+  father.innerHTML = "";
   for (let numberOfCards = 1; numberOfCards <= myInput; numberOfCards++) {
-    createContent(numberOfCards);
+    father.appendChild(createContent());
   }
 }
 // FUNCION QUE CREA LOS DIVS QUE CONTIENEN LA CARTA Y SUS CLASES
-function createContent(index) {
-  //localizamos padre
-  let father = document.querySelector("#row2");
+function createContent() {
   //creamos hijos
   let child = document.createElement("div");
   let grandChild1 = document.createElement("div");
@@ -118,7 +93,6 @@ function createContent(index) {
   child.appendChild(grandChild1);
   child.appendChild(grandChild2);
   child.appendChild(grandChild3);
-  father.appendChild(child);
   //asignamos clases e ids necesarias a bisnietos
   greatGrandSon1.setAttribute("id", "left-suit");
   greatGrandSon2.setAttribute(
@@ -133,12 +107,17 @@ function createContent(index) {
   grandChild3.setAttribute("class", "row");
   //asignamos clases e id al hijo
   child.setAttribute("class", "card col-1 w-75");
-  child.setAttribute("id", "card" + index);
+  child.setAttribute("id", "card");
 
-  let everyCard = document.querySelector("#card" + index);
+  let everyCard = document.querySelector("#card");
   console.log(everyCard);
   console.log(selectSuit());
   console.log(selectValue());
+
+  selectSuit(greatGrandSon1, greatGrandSon3);
+  selectValue(greatGrandSon2);
+
+  return child;
 }
 
 drawButton.addEventListener("click", cardGenerator);
