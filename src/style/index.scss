@@ -1,6 +1,13 @@
 @import "~bootstrap/scss/bootstrap.scss";
 .card {
   border-radius: 1rem;
+  margin: 0.5vw;
+}
+.row1 {
+  margin: 1vh 3vw;
+}
+.row2 {
+  margin: 1vh 3vw;
 }
 .hearts::before {
   content: "\2665";
