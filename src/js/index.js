@@ -1,8 +1,5 @@
-/* eslint-disable */
-
 import "../assets/img/rigo-baby.jpg";
 import "../assets/img/4geeks.ico";
-//import 'breathecode-dom'; //DOM override to make JS easier to use
 import "../style/index.scss";
 
 const drawButton = document.querySelector("#drawButton");
@@ -68,16 +65,15 @@ function selectValue(mid) {
 }
 // FUNCION QUE GENERA ARRAY DE LOS VALUES
 function cardGenerator() {
-  let allMyCards = [];
   let myInput = document.querySelector("#myInput").value;
   let father = document.querySelector("#row2");
-  father.innerHTML = "";
+  father.textContent = ""; //vacia al padre si ya tiene algun contenido, para que no se sobreescriban cartas
   for (let numberOfCards = 1; numberOfCards <= myInput; numberOfCards++) {
-    father.appendChild(createContent());
+    father.appendChild(createContent(numberOfCards)); //genera la carta con nuestra funcion create content y la asigna en la posicion del index del array
   }
 }
 // FUNCION QUE CREA LOS DIVS QUE CONTIENEN LA CARTA Y SUS CLASES
-function createContent() {
+function createContent(index) {
   //creamos hijos
   let child = document.createElement("div");
   let grandChild1 = document.createElement("div");
@@ -93,29 +89,21 @@ function createContent() {
   child.appendChild(grandChild1);
   child.appendChild(grandChild2);
   child.appendChild(grandChild3);
-  //asignamos clases e ids necesarias a bisnietos
-  greatGrandSon1.setAttribute("id", "left-suit");
+  //asignamos clases a bisnieto
   greatGrandSon2.setAttribute(
     "class",
     "value col-4 offset-4 d-flex justify-content-center"
   );
-  greatGrandSon2.setAttribute("id", "value");
-  greatGrandSon3.setAttribute("id", "right-suit");
   //asignamos clases a los nietos
   grandChild1.setAttribute("class", "row");
   grandChild2.setAttribute("class", "row");
   grandChild3.setAttribute("class", "row");
   //asignamos clases e id al hijo
   child.setAttribute("class", "card col-1 w-75");
-  child.setAttribute("id", "card");
+  child.setAttribute("id", "card" + index);
 
-  let everyCard = document.querySelector("#card");
-  console.log(everyCard);
-  console.log(selectSuit());
-  console.log(selectValue());
-
-  selectSuit(greatGrandSon1, greatGrandSon3);
-  selectValue(greatGrandSon2);
+  selectSuit(greatGrandSon1, greatGrandSon3); //asignamos palo a la carta
+  selectValue(greatGrandSon2); //asinamos valor a la carta
 
   return child;
 }
