@@ -111,8 +111,29 @@ function cardGenerator() {
     father.appendChild(createContent(numberOfCards));
   }
   //aqui utilizamos el array para el fin que queramos
-  console.log(myArray);
+  console.log(bubbleSort(myArray));
+  //   bubbleSortButton.addEventListener("click", bubbleSort(myArray));
   //aqui lo vaciamos para la siguiente vuelta (la siguiente vez que generes unas cartas)
   myArray.splice(0, myArray.length);
 }
 drawButton.addEventListener("click", cardGenerator);
+
+function bubbleSort(array) {
+  var swapp;
+  var n = array.length - 1;
+  var x = array;
+  do {
+    swapp = false;
+    for (var index = 0; index < n; index++) {
+      if (x[index] < x[index + 1]) {
+        var temp = x[index];
+        x[index] = x[index + 1];
+        x[index + 1] = temp;
+        swapp = true;
+        console.log(x);
+      }
+    }
+    n--;
+  } while (swapp);
+  return x;
+}
